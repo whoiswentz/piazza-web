@@ -15,6 +15,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: postgres
+  password: postgres
+  host: localhost
+
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -79,6 +83,4 @@ test:
 #
 production:
   <<: *default
-  database: piazza_web_production
-  username: piazza_web
-  password: <%= ENV["PIAZZA_WEB_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
